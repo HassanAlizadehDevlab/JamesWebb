@@ -15,4 +15,9 @@ class NetworkModule {
     fun launchesDataService(dataServiceFactory: DataServiceFactory): DataServiceLaunch =
         dataServiceFactory.create(DataServiceLaunch::class.java)
 
+    @Provides
+    @Reusable
+    fun rocketDataService(dataServiceFactory: DataServiceFactory): DataServiceRocket =
+        dataServiceFactory.create(DataServiceRocket::class.java)
+
 }
