@@ -1,6 +1,7 @@
 package com.android.data
 
 import com.android.data.entity.EntityModule
+import com.android.data.executor.ExecutionModule
 import com.android.data.network.NetworkModule
 import com.android.data.repository.RepositoryModule
 import dagger.Module
@@ -10,6 +11,7 @@ import dagger.Module
  */
 @Module(
     includes = [
+        ExecutionModule::class,
         EntityModule::class,
         NetworkModule::class,
         RepositoryModule::class
