@@ -1,8 +1,8 @@
 package com.android.data.repository
 
 import com.android.data.repository.datasource.DataSourceModule
-import com.android.data.repository.datasource.LaunchesRepositoryImpl
 import com.android.domain.repository.LaunchesRepository
+import com.android.domain.repository.RocketRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable
@@ -18,5 +18,11 @@ abstract class RepositoryModule {
     abstract fun provideLaunchesRepository(
         launchesRepositoryImpl: LaunchesRepositoryImpl
     ): LaunchesRepository
+
+    @Binds
+    @Reusable
+    abstract fun provideRocketRepository(
+        rocketRepositoryImpl: RocketRepositoryImpl
+    ): RocketRepository
 
 }
