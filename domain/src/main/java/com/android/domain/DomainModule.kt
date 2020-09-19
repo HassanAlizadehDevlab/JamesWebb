@@ -1,10 +1,8 @@
 package com.android.domain
 
 import com.android.domain.entity.LaunchObject
-import com.android.domain.executor.transformer.AsyncCTransformer
-import com.android.domain.executor.transformer.AsyncFTransformer
-import com.android.domain.executor.transformer.CTransformer
-import com.android.domain.executor.transformer.FTransformer
+import com.android.domain.entity.RocketObject
+import com.android.domain.executor.transformer.*
 import dagger.Binds
 import dagger.Module
 
@@ -22,4 +20,9 @@ abstract class DomainModule {
     abstract fun launchesTransformer(
         transformer: AsyncFTransformer<List<LaunchObject>>
     ): FTransformer<List<LaunchObject>>
+
+    @Binds
+    abstract fun rocketTransformer(
+        transformer: AsyncSTransformer<RocketObject>
+    ): STransformer<RocketObject>
 }

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.domain.entity.DomainObject
@@ -12,6 +11,7 @@ import com.android.presentation.R
 import com.android.presentation.adapter.BaseAction
 import com.android.presentation.common.extension.linearLayout
 import com.android.presentation.common.extension.observe
+import com.android.presentation.common.extension.toast
 import com.android.presentation.common.extension.viewModelProvider
 import com.android.presentation.common.utils.Utils
 import com.android.presentation.common.view.BaseFragment
@@ -91,8 +91,9 @@ class LaunchFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private fun observeActions(actions: BaseAction) {
         when (actions) {
             is ViewLaunchAction -> {
-                Toast.makeText(activityContext, "Hello Rocket", Toast.LENGTH_SHORT).show()
-                navigator.showRocket(actions.data)
+                if (!actions.data.isNullOrEmpty())
+                    navigator.showRocket(actions.data)
+                else activityContext.toast(R.string.no_rocket)
             }
             else -> {
             }

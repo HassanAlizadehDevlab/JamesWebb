@@ -15,7 +15,7 @@ fun Launch.map(): LaunchEntity = LaunchEntity(
     id = id,
     name = name,
     success = success,
-    rocketId = rocketId,
+    rocketId = rocket,
     dateUnix = DateUtil.formatDate(dateUnix)
 )
 

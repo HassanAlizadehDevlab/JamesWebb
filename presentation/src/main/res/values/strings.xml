@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">JamesWebb</string>
     <string name="load_success_launches">Load Success Launches</string>
+    <string name="no_rocket">There is no Rocket to show</string>
 </resources>

@@ -9,21 +9,10 @@ import androidx.fragment.app.FragmentManager
 fun FragmentManager.addFragment(
     containerViewId: Int,
     fragment: Fragment,
-    tag: String
+    tag: String? = null
 ) {
-    val fragmentPopped: Boolean = this.popBackStackImmediate(tag, 0)
-    if (fragmentPopped) {
-        // fragment is pop from backStack
-    } else {
-        this.beginTransaction()
-            .add(containerViewId, fragment, tag)
-            .addToBackStack(tag)
-            .commit()
-    }
-}
-
-fun FragmentManager.popBackStack() {
-    val transaction = beginTransaction()
-    popBackStackImmediate()
-    transaction.commit()
+    this.beginTransaction()
+        .add(containerViewId, fragment, tag)
+        .apply { tag?.let { addToBackStack(tag) } }
+        .commit()
 }

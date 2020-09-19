@@ -41,10 +41,8 @@ class LaunchViewHolder(
         containerView.txtDateTime.text = data.dateTime
 
         // Handle click listener
-        data.rocketId?.let { rocketId ->
-            containerView.root.setOnClickListener {
-                mSubject.onNext(ViewLaunchAction(rocketId))
-            }
+        containerView.root.setOnClickListener {
+            mSubject.onNext(ViewLaunchAction(data.rocketId))
         }
     }
 }

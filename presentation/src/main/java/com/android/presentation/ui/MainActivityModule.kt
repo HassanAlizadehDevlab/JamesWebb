@@ -6,6 +6,8 @@ import com.android.presentation.common.di.FragmentScope
 import com.android.presentation.common.view.BaseActivityModule
 import com.android.presentation.ui.launch.LaunchFragment
 import com.android.presentation.ui.launch.LaunchFragmentModule
+import com.android.presentation.ui.rocket.RocketFragment
+import com.android.presentation.ui.rocket.RocketFragmentModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -23,6 +25,10 @@ abstract class MainActivityModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [LaunchFragmentModule::class])
     abstract fun launchFragmentInjector(): LaunchFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [RocketFragmentModule::class])
+    abstract fun rocketFragmentInjector(): RocketFragment
 
     @Binds
     @ActivityScope

@@ -1,6 +1,5 @@
 package com.android.presentation.common.view
 
-import android.widget.Toast
 import androidx.annotation.StringRes
 import com.android.presentation.common.extension.toast
 import com.android.presentation.common.navigator.Navigator
@@ -21,25 +20,6 @@ open class BaseActivity : DaggerAppCompatActivity() {
 
     protected fun showMessage(message: String) {
         toast(message)
-    }
-
-
-    /**
-     * function to go back to previous fragment
-     */
-    protected fun oneStepBack() {
-        if (supportFragmentManager.backStackEntryCount >= 2) {
-            supportFragmentManager.popBackStack()
-        } else doubleClickToExit()
-    }
-
-    // double back pressed function
-    private var back_pressed: Long = 0
-
-    private fun doubleClickToExit() {
-        if (back_pressed + 2000 > System.currentTimeMillis()) finish() else
-            toast("Click again to exit", Toast.LENGTH_SHORT)
-        back_pressed = System.currentTimeMillis()
     }
 
 }
