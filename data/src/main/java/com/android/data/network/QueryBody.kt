@@ -9,7 +9,7 @@ data class QueryBody(
 )
 
 data class Query(
-    val success: Boolean = false
+    val success: Boolean?
 )
 
 data class Options(

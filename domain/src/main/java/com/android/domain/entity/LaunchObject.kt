@@ -7,6 +7,6 @@ data class LaunchObject(
     val id: String,
     val name: String,
     val success: Boolean,
-    val rocket: String,
-    val dateUnix: String
+    val rocketId: String?,
+    val dateTime: String
 ): DomainObject

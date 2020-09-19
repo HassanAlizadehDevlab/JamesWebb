@@ -9,5 +9,5 @@ import io.reactivex.Flowable
  */
 interface LaunchesRepository {
     fun launches(): Flowable<List<LaunchObject>>
-    fun loadLaunches(successLaunches: Boolean): Completable
+    fun loadLaunches(successLaunches: Boolean?): Completable
 }

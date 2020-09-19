@@ -19,7 +19,7 @@ class LaunchesRepositoryImpl @Inject constructor(
         return dataSource.launches().map { it.map() }
     }
 
-    override fun loadLaunches(successLaunches: Boolean): Completable {
+    override fun loadLaunches(successLaunches: Boolean?): Completable {
         return dataSource.loadLaunches(successLaunches)
     }
 }

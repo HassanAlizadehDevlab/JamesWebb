@@ -12,8 +12,8 @@ import javax.inject.Inject
 class RefreshLaunchesUseCase @Inject constructor(
     private val repository: LaunchesRepository,
     private val transformer: CTransformer
-) : UseCaseCompletable<Boolean>() {
-    override fun execute(param: Boolean): Completable {
+) : UseCaseCompletable<Boolean?>() {
+    override fun execute(param: Boolean?): Completable {
         return repository.loadLaunches(param)
             .compose(transformer)
     }

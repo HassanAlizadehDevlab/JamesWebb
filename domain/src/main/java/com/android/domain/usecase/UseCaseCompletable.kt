@@ -8,14 +8,10 @@ import io.reactivex.Completable
 abstract class UseCaseCompletable<P> {
 
     operator fun invoke(param: P?): Completable {
-        return if (param != null) {
-            execute(param)
-        } else {
-            Completable.error(IllegalArgumentException())
-        }
+        return execute(param)
     }
 
-    protected abstract fun execute(param: P): Completable
+    protected abstract fun execute(param: P?): Completable
 
 }
 

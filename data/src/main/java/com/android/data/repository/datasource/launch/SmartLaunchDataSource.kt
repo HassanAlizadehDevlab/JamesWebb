@@ -24,7 +24,7 @@ open class SmartLaunchDataSource @Inject constructor(
         return launchDao.selectAll()
     }
 
-    override fun loadLaunches(successLaunches: Boolean): Completable {
+    override fun loadLaunches(successLaunches: Boolean?): Completable {
         return getQueryParams(successLaunches)
             .flatMap { service.launches(it) }
             .flatMap { clearLaunches().toSingle { it } }
@@ -42,7 +42,7 @@ open class SmartLaunchDataSource @Inject constructor(
         return Completable.fromAction { launchDao.deleteAll() }
     }
 
-    private fun getQueryParams(success: Boolean): Single<QueryBody> {
+    private fun getQueryParams(success: Boolean?): Single<QueryBody> {
         return Single.just(Query(success))
             .map { query ->
                 return@map QueryBody(query)

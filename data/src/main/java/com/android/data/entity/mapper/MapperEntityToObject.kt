@@ -8,5 +8,5 @@ import com.android.domain.entity.LaunchObject
  */
 fun List<LaunchEntity>.map(): List<LaunchObject> = map { it.map() }
 fun LaunchEntity.map(): LaunchObject = LaunchObject(
-    id = id, name = name, success = success, rocket = rocket, dateUnix = dateUnix
+    id = id, name = name, success = success, rocketId = rocketId, dateTime = dateUnix
 )

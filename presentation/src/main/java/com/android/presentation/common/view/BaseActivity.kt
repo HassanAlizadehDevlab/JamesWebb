@@ -1,10 +1,6 @@
 package com.android.presentation.common.view
 
-import androidx.annotation.IdRes
 import androidx.annotation.StringRes
-import androidx.fragment.app.Fragment
-import com.android.presentation.common.extension.addFragment
-import com.android.presentation.common.extension.detachFragment
 import com.android.presentation.common.extension.toast
 import com.android.presentation.common.navigator.Navigator
 import dagger.android.support.DaggerAppCompatActivity

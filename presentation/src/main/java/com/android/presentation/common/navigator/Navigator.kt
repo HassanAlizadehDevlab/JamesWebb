@@ -4,7 +4,7 @@ import androidx.fragment.app.FragmentManager
 import com.android.presentation.R
 import com.android.presentation.common.extension.addFragment
 import com.android.presentation.common.view.BaseActivityModule
-import kotlinx.android.synthetic.main.activity_main.view.*
+import com.android.presentation.ui.launch.LaunchFragment
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -19,6 +19,14 @@ class Navigator @Inject constructor(
 ) {
 
     fun showLaunches() {
+        fragmentManager.addFragment(
+            R.id.fragmentContainer,
+            LaunchFragment.newInstance(),
+            LaunchFragment::class.java.name
+        )
+    }
+
+    fun showRocket(rocketId: String) {
 
     }
 
