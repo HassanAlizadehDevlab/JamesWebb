@@ -2,6 +2,7 @@ package com.android.data
 
 import com.android.data.entity.EntityModule
 import com.android.data.network.NetworkModule
+import com.android.data.repository.RepositoryModule
 import dagger.Module
 
 /**
@@ -10,7 +11,8 @@ import dagger.Module
 @Module(
     includes = [
         EntityModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        RepositoryModule::class
     ]
 )
 abstract class DataModule

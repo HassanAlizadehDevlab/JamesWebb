@@ -5,7 +5,7 @@ package com.android.data.network
  */
 data class QueryBody(
     val query: Query,
-    val options: Options
+    val options: Options = Options()
 )
 
 data class Query(
