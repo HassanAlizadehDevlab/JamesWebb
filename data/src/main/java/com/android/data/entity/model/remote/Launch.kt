@@ -9,7 +9,7 @@ data class Launch(
     val id: String,
     val name: String,
     val success: Boolean,
-    val rocket: String,
+    val rocketId: String,
     @SerializedName("date_unix")
     val dateUnix: Long
 )
