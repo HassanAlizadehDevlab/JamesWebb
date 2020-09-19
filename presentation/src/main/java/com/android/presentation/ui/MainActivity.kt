@@ -16,4 +16,9 @@ class MainActivity : BaseActivity() {
         if (savedInstanceState == null)
             navigator.showLaunches()
     }
+
+    override fun onBackPressed() {
+        oneStepBack()
+    }
+
 }

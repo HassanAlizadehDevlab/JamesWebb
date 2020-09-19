@@ -21,3 +21,9 @@ fun FragmentManager.addFragment(
             .commit()
     }
 }
+
+fun FragmentManager.popBackStack() {
+    val transaction = beginTransaction()
+    popBackStackImmediate()
+    transaction.commit()
+}

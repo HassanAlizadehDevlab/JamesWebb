@@ -3,7 +3,9 @@ package com.android.presentation.ui.launch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
+import com.android.domain.entity.DomainObject
 import com.android.domain.entity.LaunchObject
+import com.android.domain.entity.SuccessLaunchObject
 import com.android.domain.usecase.invoke
 import com.android.domain.usecase.launch.GetLaunchesUseCase
 import com.android.domain.usecase.launch.RefreshLaunchesUseCase
@@ -24,7 +26,12 @@ class LaunchViewModel @Inject constructor(
 
     private val _launches: LiveData<List<LaunchObject>> =
         LiveDataReactiveStreams.fromPublisher(getLaunchesUseCase.invoke())
-    val launches: LiveData<MutableList<LaunchObject>> = _launches.map { it.toMutableList() }
+    val launches: LiveData<MutableList<DomainObject>> = _launches.map {
+        it.toMutableList<DomainObject>()
+    }.map {
+        it.add(0, SuccessLaunchObject())
+        return@map it
+    }
 
     val clickObservable = MutableLiveData<BaseAction>()
     val isRefreshing = MutableLiveData<Boolean>()
@@ -39,7 +46,7 @@ class LaunchViewModel @Inject constructor(
             .track()
     }
 
-    fun refreshWithSuccessLaunches() {
+    private fun refreshWithSuccessLaunches() {
         refresh(true)
     }
 
@@ -51,6 +58,9 @@ class LaunchViewModel @Inject constructor(
             when (it.getType()) {
                 ActionType.LAUNCH -> {
                     clickObservable.value = it
+                }
+                ActionType.SUCCESS_LAUNCH -> {
+                    refreshWithSuccessLaunches()
                 }
             }
         }.track()

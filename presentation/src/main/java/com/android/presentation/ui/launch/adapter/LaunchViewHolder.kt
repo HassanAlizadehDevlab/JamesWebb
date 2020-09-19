@@ -42,7 +42,7 @@ class LaunchViewHolder(
 
         // Handle click listener
         data.rocketId?.let { rocketId ->
-            itemView.setOnClickListener {
+            containerView.root.setOnClickListener {
                 mSubject.onNext(ViewLaunchAction(rocketId))
             }
         }

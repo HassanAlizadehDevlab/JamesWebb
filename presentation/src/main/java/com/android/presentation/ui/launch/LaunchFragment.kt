@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.android.domain.entity.LaunchObject
+import com.android.domain.entity.DomainObject
 import com.android.presentation.R
 import com.android.presentation.adapter.BaseAction
 import com.android.presentation.common.extension.linearLayout
@@ -54,8 +54,6 @@ class LaunchFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
 
-
-
         setupSwipeRefreshLayout()
         setupRecyclerView()
         setupAdapter()
@@ -85,14 +83,15 @@ class LaunchFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             ContextCompat.getColor(activityContext, R.color.colorAccent)
         )
     }
-    private fun observeLaunches(venues: MutableList<LaunchObject>) {
+
+    private fun observeLaunches(venues: MutableList<DomainObject>) {
         adapter.addItems(venues)
     }
 
     private fun observeActions(actions: BaseAction) {
         when (actions) {
             is ViewLaunchAction -> {
-                Toast.makeText(activityContext,  "Hello Rocket", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activityContext, "Hello Rocket", Toast.LENGTH_SHORT).show()
                 navigator.showRocket(actions.data)
             }
             else -> {

@@ -19,6 +19,7 @@ class LaunchAdapter(
         val view = parent.inflate(viewType)
         val holder = when (viewType) {
             ViewTypeHolder.LAUNCH_VIEW -> LaunchViewHolder(view)
+            ViewTypeHolder.SUCCESS_LAUNCH_VIEW -> SuccessLaunchViewHolder(view)
             else -> EmptyViewHolder(view)
         }
         listener(holder)
@@ -29,6 +30,7 @@ class LaunchAdapter(
         val data = mItems[position]
         when (holder.getType()) {
             ViewTypeHolder.LAUNCH_VIEW -> (holder as LaunchViewHolder).bind(data as? LaunchObject)
+            ViewTypeHolder.SUCCESS_LAUNCH_VIEW -> (holder as SuccessLaunchViewHolder).bind(Unit)
         }
     }
 
