@@ -1,9 +1,8 @@
 package com.android.data.network
 
-import com.android.data.entity.model.remote.LaunchList
+import com.android.data.entity.model.remote.Rocket
 import io.reactivex.Single
 import retrofit2.http.GET
-import retrofit2.http.POST
 import retrofit2.http.Query
 
 /**
@@ -11,5 +10,5 @@ import retrofit2.http.Query
  */
 interface DataServiceRocket {
     @GET("rockets/{ID}")
-    fun launches(@Query(value = "ID") rocketId: String): Single<LaunchList>
+    fun rocket(@Query(value = "ID") rocketId: String): Single<Rocket>
 }

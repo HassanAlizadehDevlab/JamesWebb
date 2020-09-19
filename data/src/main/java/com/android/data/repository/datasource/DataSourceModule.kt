@@ -2,6 +2,8 @@ package com.android.data.repository.datasource
 
 import com.android.data.repository.datasource.launch.LaunchDataSource
 import com.android.data.repository.datasource.launch.SmartLaunchDataSource
+import com.android.data.repository.datasource.rocket.RocketDataSource
+import com.android.data.repository.datasource.rocket.SmartRocketDataSource
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable
@@ -17,5 +19,11 @@ abstract class DataSourceModule {
     abstract fun provideLaunchesDataSource(
         smartLaunchDataSource: SmartLaunchDataSource
     ): LaunchDataSource
+
+    @Binds
+    @Reusable
+    abstract fun provideRocketDataSource(
+        smartRocketDataSource: SmartRocketDataSource
+    ): RocketDataSource
 
 }
