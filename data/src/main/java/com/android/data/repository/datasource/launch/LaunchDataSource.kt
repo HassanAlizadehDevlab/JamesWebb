@@ -9,5 +9,5 @@ import io.reactivex.Flowable
  */
 interface LaunchDataSource {
     fun launches(): Flowable<List<LaunchEntity>>
-    fun loadLaunches(successLaunches: Boolean = false): Completable
+    fun loadLaunches(successLaunches: Boolean): Completable
 }

@@ -61,11 +61,12 @@ class SmartLaunchDataSourceTest {
     @Test
     fun `load launches with result`() {
         // GIVEN
+        val successLaunches = true
         Mockito.doReturn(Single.just(TestUtil.launchesFromRemote()))
             .whenever(dataService).launches(any())
 
         // WHEN
-        smartLaunchDataSource.loadLaunches()
+        smartLaunchDataSource.loadLaunches(successLaunches)
             .test()
             .assertComplete()
 
@@ -104,11 +105,12 @@ class SmartLaunchDataSourceTest {
     @Test
     fun `load launches on error`() {
         // GIVEN
+        val successLaunches = true
         Mockito.doReturn(Single.error<ErrorThrowable>(TestUtil.error()))
             .whenever(dataService).launches(any())
 
         // WHEN
-        smartLaunchDataSource.loadLaunches()
+        smartLaunchDataSource.loadLaunches(successLaunches)
             .test()
             .assertNotComplete()
 
