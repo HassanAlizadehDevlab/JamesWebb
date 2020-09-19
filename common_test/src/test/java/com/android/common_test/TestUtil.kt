@@ -5,6 +5,7 @@ import com.android.common.error.ErrorThrowable
 import com.android.data.entity.mapper.map
 import com.android.data.entity.model.local.LaunchEntity
 import com.android.data.entity.model.remote.LaunchList
+import com.android.data.entity.model.remote.Rocket
 import com.google.gson.Gson
 
 /**
@@ -12,8 +13,14 @@ import com.google.gson.Gson
  */
 object TestUtil {
 
+    val rocketId = "      "
+
     fun launchesFromDB(): List<LaunchEntity> {
         return launchesFromRemote().launches.map()
+    }
+
+    fun rocketFromRemote(): Rocket {
+        return Gson().fromJson(parseJson("rocket.json"), Rocket::class.java)
     }
 
     fun launchesFromRemote(): LaunchList {
