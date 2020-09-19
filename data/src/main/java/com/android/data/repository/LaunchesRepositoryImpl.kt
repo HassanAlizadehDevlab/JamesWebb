@@ -1,4 +1,4 @@
-package com.android.data.repository.datasource
+package com.android.data.repository
 
 import com.android.data.repository.datasource.launch.LaunchDataSource
 import com.android.domain.entity.LaunchObject

@@ -1,6 +1,7 @@
-package com.android.data.repository.datasource
+package com.android.data.repository
 
 import com.android.common_test.TestUtil
+import com.android.data.repository.LaunchesRepositoryImpl
 import com.android.data.repository.datasource.launch.LaunchDataSource
 import com.android.domain.repository.LaunchesRepository
 import com.nhaarman.mockitokotlin2.doReturn
