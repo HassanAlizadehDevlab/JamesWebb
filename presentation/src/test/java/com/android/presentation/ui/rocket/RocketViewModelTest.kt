@@ -7,7 +7,6 @@ import com.android.data.entity.mapper.map
 import com.android.domain.entity.RocketObject
 import com.android.domain.usecase.rocket.GetRocketUseCase
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import io.reactivex.Single
 import org.junit.Before
@@ -16,14 +15,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.ArgumentMatchers.anyString
-import org.mockito.Mockito
+import org.mockito.Mockito.doReturn
+import org.mockito.Mockito.verify
 
 /**
  * Created by hassanalizadeh on 20,September,2020
  */
 @RunWith(JUnit4::class)
 class RocketViewModelTest {
-
 
     @Rule
     @JvmField
@@ -58,7 +57,7 @@ class RocketViewModelTest {
 
 
     private fun dataExistsForGettingRocket() {
-        Mockito.doReturn(Single.just(TestUtil.rocketFromRemote().map()))
+        doReturn(Single.just(TestUtil.rocketFromRemote().map()))
             .whenever(getRocketUseCase).invoke(anyString())
     }
 
