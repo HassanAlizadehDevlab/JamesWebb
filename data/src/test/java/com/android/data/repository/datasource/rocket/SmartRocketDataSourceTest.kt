@@ -3,7 +3,7 @@ package com.android.data.repository.datasource.rocket
 import com.android.common_test.TestUtil
 import com.android.data.network.DataServiceRocket
 import com.nhaarman.mockitokotlin2.whenever
-import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -39,7 +39,7 @@ class SmartRocketDataSourceTest {
     @Test
     fun `get rocket by id`() {
         // GIVEN
-        Mockito.doReturn(Flowable.just(TestUtil.rocketFromRemote()))
+        Mockito.doReturn(Single.just(TestUtil.rocketFromRemote()))
             .whenever(dataService)
             .rocket(anyString())
 

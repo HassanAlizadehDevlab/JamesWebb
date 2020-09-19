@@ -61,7 +61,7 @@ class SmartLaunchDataSourceTest {
     @Test
     fun `load launches with result`() {
         // GIVEN
-        val successLaunches = true
+        val successLaunches = null
         Mockito.doReturn(Single.just(TestUtil.launchesFromRemote()))
             .whenever(dataService).launches(any())
 
@@ -71,7 +71,9 @@ class SmartLaunchDataSourceTest {
             .assertComplete()
 
         // THEN
-        Mockito.verify(dataService).launches(argThat { !this.query.success })
+        Mockito.verify(dataService).launches(argThat {
+            this.query.success == null
+        })
         Mockito.verify(launchDao).deleteAll()
         Mockito.verify(launchDao).insert(
             argThat {
@@ -93,7 +95,7 @@ class SmartLaunchDataSourceTest {
             .assertComplete()
 
         // THEN
-        Mockito.verify(dataService).launches(argThat { this.query.success })
+        Mockito.verify(dataService).launches(argThat { this.query.success == true })
         Mockito.verify(launchDao).deleteAll()
         Mockito.verify(launchDao).insert(
             argThat {
